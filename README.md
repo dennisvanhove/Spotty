@@ -4,7 +4,7 @@ A barebones personal music streaming server. Drop your audio files in a folder,
 run one command, and play them from any browser — including your car's interface
 while driving.
 
-Zero dependencies. Just Node.js.
+Spotty comes as a Node application that has zero dependencies, so no `npm install` required!.
 
 ## Quick start
 
@@ -20,31 +20,12 @@ Zero dependencies. Just Node.js.
 3. Open `http://localhost:3000` on this computer, or on your phone open
    `http://<this-computer-ip>:3000` (they must be on the same network/Wi-Fi).
 
-   Find your computer's IP with `ipconfig getifaddr en0` (macOS Wi-Fi).
+## Using it on the go
 
-## Using it in the car
+Spotty has no authentication. For this reasonI strongly discourage simply opening port 3000 on your router and allowing incoming traffic from the public internet.
+It is encouraged to use tools like ngrok or tailscale to serve Spotty to the public internet.
 
-1. Connect your phone to the car (Bluetooth, CarPlay, or Android Auto).
-2. Open Spotty in your phone's browser and start a song.
-3. Your car's play / pause / next / previous controls (steering wheel,
-   touchscreen) will now control Spotty. This works via the browser's
-   **Media Session API**, which is already wired up.
-
-Tip: keep the screen on or the browser tab in the foreground for the most
-reliable background playback, especially on iOS Safari.
-
-## Playing from anywhere (not just home Wi-Fi)
-
-The server serves over plain HTTP on your local network. To reach it from
-mobile data while driving you have options, easiest first:
-
-- **Tailscale** (recommended): install it on the computer and your phone, then
-  use the computer's Tailscale IP — works anywhere, encrypted, no config.
-- A tunnel like `cloudflared` or `ngrok` to expose the port temporarily.
-- Port-forwarding on your router (least secure; avoid unless you add auth/HTTPS).
-
-> Note: this server has **no authentication**. Don't expose it directly to the
-> public internet without putting it behind a tunnel/VPN that handles access.
+I personally have Spotty running 24/7 on a Raspbery Pi in combination with Tailscale, works like a charm.
 
 ## Configuration
 
